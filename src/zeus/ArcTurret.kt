@@ -10,8 +10,12 @@ import mindustry.entities.bullet.BulletType
 import mindustry.entities.bullet.LightningBulletType
 import mindustry.gen.Sounds
 import mindustry.type.Category
+import mindustry.type.Item
 import mindustry.type.ItemStack
 import mindustry.world.blocks.defense.turrets.PowerTurret
+
+private fun createRequiredStacks(items: List<Pair<Item, Int>>): Array<ItemStack> =
+    ItemStack.with(*items.flatMap { listOf(it.first, it.second) }.toTypedArray())
 
 class ArcTurret(name: String, size: Int) : PowerTurret(name) {
     init {
@@ -19,14 +23,24 @@ class ArcTurret(name: String, size: Int) : PowerTurret(name) {
         val sizeSquare = pow(size, 2)
         val sizeCube = pow(size, 3)
 
-        requirements(Category.turret, ItemStack.with(
-            Items.copper,
-            50 * sizeSquare,
-            Items.lead,
-            50 * sizeSquare,
-            Items.silicon,
-            10 * sizeCube
-        ))
+        requirements(Category.turret, createRequiredStacks(buildList {
+            add(Pair(Items.copper, 50 * sizeSquare))
+            add(Pair(Items.lead, 50 * sizeSquare))
+            add(Pair(Items.graphite, 30 * sizeSquare))
+
+            if (size > 2)
+                add(Pair(Items.titanium, 25 * sizeSquare))
+            if (size > 3)
+                add(Pair(Items.silicon, 10 * sizeCube))
+            if (size > 4)
+                add(Pair(Items.thorium, 50 * sizeSquare))
+            if (size > 5)
+                add(Pair(Items.plastanium, 6 * sizeCube))
+            if (size > 6)
+                add(Pair(Items.phaseFabric, 24 * sizeSquare))
+            if (size > 7)
+                add(Pair(Items.surgeAlloy, 11 * sizeSquare))
+        }))
 
         shootType = object : LightningBulletType() {
             init {
