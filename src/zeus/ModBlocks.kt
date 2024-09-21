@@ -2,6 +2,8 @@ package zeus
 
 object ModBlocks {
     init {
-        repeat(6) { ArcTurret("arc-$it", it) }
+        (2..9).forEach {
+            ArcTurret("arc-$it", it)
+        }
     }
 }
