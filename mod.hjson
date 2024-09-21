@@ -1,0 +1,20 @@
+#the mod name as displayed in-game
+displayName: "Zeus"
+
+#the internal name of your mod
+name: "zeus"
+
+#your name
+author: "wdfeer"
+
+#the fully qualified main class of the mod
+main: "zeus.Zeus"
+
+#the mod description as seen in the mod dialog
+description: "A Mindustry Kotlin mod adding new turrets."
+
+#the mod version
+version: 0.1-alpha
+
+#the minimum game build required to run this mod
+minGameVersion: 146
