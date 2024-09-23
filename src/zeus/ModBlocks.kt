@@ -1,13 +1,14 @@
 package zeus
 
-import zeus.turrets.ArcTurret
+import zeus.turrets.AirArc
+import zeus.turrets.LandArc
 
 object ModBlocks {
     init {
         (2..4).forEach {
-            ArcTurret("arc-$it", it)
+            LandArc(it)
         }
 
-        ArcTurret("air-arc", 2, true)
+        AirArc(2)
     }
 }

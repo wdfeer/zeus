@@ -5,13 +5,13 @@ import arc.math.Mathf.pow
 import arc.math.Mathf.sqrt
 import mindustry.content.Fx
 import mindustry.content.Items
+import mindustry.entities.bullet.BulletType
 import mindustry.gen.Sounds
 import mindustry.type.Category
 import mindustry.world.blocks.defense.turrets.PowerTurret
-import zeus.bullets.ArcBulletType
 import zeus.util.createRequiredStacks
 
-class ArcTurret(name: String, size: Int, air: Boolean = false) : PowerTurret(name) {
+abstract class Arc(name: String, size: Int, shootType: BulletType) : PowerTurret(name) {
     init {
         val sizeRoot = sqrt(size.toFloat())
         val sizeSquare = pow(size, 2)
@@ -36,12 +36,10 @@ class ArcTurret(name: String, size: Int, air: Boolean = false) : PowerTurret(nam
                 add(Pair(Items.surgeAlloy, 11 * sizeSquare))
         }))
 
-        shootType = ArcBulletType(size.toFloat(), sizeRoot, air)
 
         reload = 35f / sizeRoot
         shootCone = 40f
         rotateSpeed = 8f / sizeRoot
-        targetAir = air
         range = 90f * sizeRoot
         shootEffect = Fx.lightningShoot
         heatColor = Color.red
@@ -51,5 +49,7 @@ class ArcTurret(name: String, size: Int, air: Boolean = false) : PowerTurret(nam
         shootSound = Sounds.spark
         consumePower(3.3f * sizeSquare)
         coolant = consumeCoolant(0.1f * size)
+
+        this.shootType = shootType
     }
 }

@@ -6,11 +6,12 @@ import mindustry.content.StatusEffects
 import mindustry.entities.bullet.BulletType
 import mindustry.entities.bullet.LightningBulletType
 
-class ArcBulletType(damageMult: Float, lengthMult: Float, air: Boolean = false) : LightningBulletType() {
+class ArcBulletType(damageMult: Float, lengthMult: Float, air: Boolean) : LightningBulletType() {
     init {
         damage = 20f * damageMult
         lightningLength = (25 * lengthMult).toInt()
         collidesAir = air
+        collidesGround = !air
         ammoMultiplier = 1f
 
         //for visual stats only.
