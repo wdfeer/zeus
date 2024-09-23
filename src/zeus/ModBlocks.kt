@@ -4,7 +4,7 @@ import zeus.turrets.ArcTurret
 
 object ModBlocks {
     init {
-        2.let {
+        (2..3).forEach {
             ArcTurret("arc-$it", it)
         }
     }
