@@ -2,7 +2,7 @@ package zeus
 
 object ModBlocks {
     init {
-        (2..9).forEach {
+        2.let {
             ArcTurret("arc-$it", it)
         }
     }
