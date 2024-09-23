@@ -11,7 +11,7 @@ import mindustry.world.blocks.defense.turrets.PowerTurret
 import zeus.bullets.ArcBulletType
 import zeus.util.createRequiredStacks
 
-class ArcTurret(name: String, size: Int) : PowerTurret(name) {
+class ArcTurret(name: String, size: Int, air: Boolean = false) : PowerTurret(name) {
     init {
         val sizeRoot = sqrt(size.toFloat())
         val sizeSquare = pow(size, 2)
@@ -36,12 +36,12 @@ class ArcTurret(name: String, size: Int) : PowerTurret(name) {
                 add(Pair(Items.surgeAlloy, 11 * sizeSquare))
         }))
 
-        shootType = ArcBulletType(size.toFloat(), sizeRoot)
+        shootType = ArcBulletType(size.toFloat(), sizeRoot, air)
 
         reload = 35f / sizeRoot
         shootCone = 40f
         rotateSpeed = 8f / sizeRoot
-        targetAir = false
+        targetAir = air
         range = 90f * sizeRoot
         shootEffect = Fx.lightningShoot
         heatColor = Color.red

@@ -7,5 +7,7 @@ object ModBlocks {
         (2..4).forEach {
             ArcTurret("arc-$it", it)
         }
+
+        ArcTurret("air-arc", 2, true)
     }
 }
