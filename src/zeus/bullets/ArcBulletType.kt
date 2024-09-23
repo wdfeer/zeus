@@ -26,7 +26,8 @@ class ArcBulletType(damageMult: Float, lengthMult: Float, air: Boolean) : Lightn
                 statusDuration = 10f
                 hittable = false
                 lightColor = Color.white
-                collidesAir = false
+                collidesAir = air
+                collidesGround = !air
                 buildingDamageMultiplier = 0.25f
             }
         }
