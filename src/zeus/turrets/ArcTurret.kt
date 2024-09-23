@@ -1,21 +1,15 @@
-package zeus
+package zeus.turrets
 
 import arc.graphics.Color
 import arc.math.Mathf.pow
 import arc.math.Mathf.sqrt
 import mindustry.content.Fx
 import mindustry.content.Items
-import mindustry.content.StatusEffects
-import mindustry.entities.bullet.BulletType
-import mindustry.entities.bullet.LightningBulletType
 import mindustry.gen.Sounds
 import mindustry.type.Category
-import mindustry.type.Item
-import mindustry.type.ItemStack
 import mindustry.world.blocks.defense.turrets.PowerTurret
-
-private fun createRequiredStacks(items: List<Pair<Item, Int>>): Array<ItemStack> =
-    ItemStack.with(*items.flatMap { listOf(it.first, it.second) }.toTypedArray())
+import zeus.bullets.ArcBulletType
+import zeus.util.createRequiredStacks
 
 class ArcTurret(name: String, size: Int) : PowerTurret(name) {
     init {
@@ -42,31 +36,8 @@ class ArcTurret(name: String, size: Int) : PowerTurret(name) {
                 add(Pair(Items.surgeAlloy, 11 * sizeSquare))
         }))
 
-        shootType = object : LightningBulletType() {
-            init {
-                damage = 20f * size
-                lightningLength = (25 * sizeRoot).toInt()
-                collidesAir = false
-                ammoMultiplier = 1f
+        shootType = ArcBulletType(size.toFloat(), sizeRoot)
 
-                //for visual stats only.
-                buildingDamageMultiplier = 0.25f
-
-                lightningType = object : BulletType(0.0001f, 0f) {
-                    init {
-                        lifetime = Fx.lightning.lifetime
-                        hitEffect = Fx.hitLancer
-                        despawnEffect = Fx.none
-                        status = StatusEffects.shocked
-                        statusDuration = 10f
-                        hittable = false
-                        lightColor = Color.white
-                        collidesAir = false
-                        buildingDamageMultiplier = 0.25f
-                    }
-                }
-            }
-        }
         reload = 35f / sizeRoot
         shootCone = 40f
         rotateSpeed = 8f / sizeRoot
