@@ -1,6 +1,5 @@
 package zeus.turrets
 
-import arc.graphics.Color
 import arc.math.Mathf.pow
 import arc.math.Mathf.sqrt
 import mindustry.content.Fx
@@ -36,13 +35,11 @@ abstract class Arc(name: String, size: Int, shootType: BulletType) : PowerTurret
                 add(Pair(Items.surgeAlloy, 11 * sizeSquare))
         }))
 
-
         reload = 35f / sizeRoot
         shootCone = 40f
         rotateSpeed = 8f / sizeRoot
         range = 90f * sizeRoot
         shootEffect = Fx.lightningShoot
-        heatColor = Color.red
         recoil = 1f
         this.size = size
         health = 260 * sizeSquare
