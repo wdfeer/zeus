@@ -1,4 +1,4 @@
-package zeus.turrets
+package zeus.turrets.arc
 
 import arc.graphics.Color
 import zeus.bullets.ArcBulletType

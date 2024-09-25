@@ -1,4 +1,4 @@
-package zeus.turrets
+package zeus.turrets.arc
 
 import arc.math.Mathf.pow
 import arc.math.Mathf.sqrt

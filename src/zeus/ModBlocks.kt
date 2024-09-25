@@ -1,7 +1,10 @@
 package zeus
 
-import zeus.turrets.AirArc
-import zeus.turrets.LandArc
+import mindustry.content.Items
+import mindustry.type.ItemStack
+import zeus.turrets.arc.AirArc
+import zeus.turrets.arc.LandArc
+import zeus.turrets.lancer.Lancer
 
 object ModBlocks {
     init {
@@ -10,5 +13,13 @@ object ModBlocks {
         }
 
         AirArc(2)
+
+        Lancer("hybrid-lancer") {
+            requirements = requirements.plus(ItemStack(Items.plastanium, 25))
+            range *= 1.2f
+
+            targetAir = true
+            shootType.collidesAir = true
+        }
     }
 }
