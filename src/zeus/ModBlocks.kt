@@ -15,8 +15,10 @@ object ModBlocks {
         AirArc(2)
 
         Lancer("hybrid-lancer") {
-            requirements = requirements.plus(ItemStack(Items.plastanium, 25))
-            range *= 1.2f
+            requirements = requirements.plus(ItemStack(Items.plastanium, 35))
+            range *= 1.05f
+            shootType.damage *= 0.8f
+            reload *= 0.6f
 
             targetAir = true
             shootType.collidesAir = true
